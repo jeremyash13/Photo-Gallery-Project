@@ -1,20 +1,27 @@
 var $imageGallery = $('.image-gallery a');
 var $searchPhoto = $('#search-photo');
-var searchString = '';
 var $img = $('img');
 
 //call simpleLightbox plugin
 $($imageGallery).simpleLightbox();
 
 //clear search box on page load // FIXME: doesn't work yet
-$($searchPhoto).attr('value', '');
+// $($searchPhoto).attr('value', '');
 
 //keyup event listener on search box
-$($searchPhoto).on('keyup', function () {
-  searchString = this.value;
-  console.log(searchString);
+$($searchPhoto).on('keyup', function (e) {
+  const searchValue = e.target.value.toLowerCase();
+  console.log(searchValue);
 
-  for (i=0; i<$img.length; i+=1) {
+  Array.from($img).forEach(function(img) {
+    const alt = img.getAttribute('alt');
 
-  }
+    if (alt.toLowerCase().indexOf(searchValue) != -1) {
+      img.style.display = 'inline';
+    } else {
+      img.style.display = 'none';
+    }
+
+  })
+
 });
