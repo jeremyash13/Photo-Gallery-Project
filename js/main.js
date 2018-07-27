@@ -5,23 +5,28 @@ var $img = $('img');
 //call simpleLightbox plugin
 $($imageGallery).simpleLightbox();
 
-//clear search box on page load // FIXME: doesn't work yet
-// $($searchPhoto).attr('value', '');
+//call animsition plugin
+$('.animsition').animsition();
 
+// FIXME: clear search box on page load
+ $($searchPhoto).attr('value', "");
+
+
+//search/filter feature
 //keyup event listener on search box
 $($searchPhoto).on('keyup', function (e) {
   const searchValue = e.target.value.toLowerCase();
-  console.log(searchValue);
 
+  //convert img elements to an array-- loop through them-- store alt text
   Array.from($img).forEach(function(img) {
     const alt = img.getAttribute('alt');
 
+    //compare alt text to search term-- hide elements not found
     if (alt.toLowerCase().indexOf(searchValue) != -1) {
       img.style.display = 'inline';
     } else {
       img.style.display = 'none';
     }
-
-  })
+  });
 
 });
