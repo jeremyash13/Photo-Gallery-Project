@@ -9,21 +9,24 @@ $($imageGallery).simpleLightbox();
 $('.animsition').animsition();
 
 // FIXME: clear search box on page load
- $($searchPhoto).attr('value', "");
+$($searchPhoto).attr('value', "");
 
 
-//search/filter feature
+
+//search filter feature
+
 //keyup event listener on search box
 $($searchPhoto).on('keyup', function (e) {
   const searchValue = e.target.value.toLowerCase();
 
   //convert img elements to an array-- loop through them-- store alt text
   Array.from($img).forEach(function(img) {
-    const alt = img.getAttribute('alt');
+    const altText = img.getAttribute('alt');
 
     //compare alt text to search term-- hide elements not found
-    if (alt.toLowerCase().indexOf(searchValue) != -1) {
+    if (altText.toLowerCase().indexOf(searchValue) != -1) {
       img.style.display = 'inline';
+
     } else {
       img.style.display = 'none';
     }
