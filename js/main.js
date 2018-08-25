@@ -1,6 +1,6 @@
-var $imageGallery = $('.image-gallery a');
-var $searchPhoto = $('#search-photo');
-var $img = $('img');
+let $imageGallery = $('.image-gallery a');
+let $searchPhoto = $('#search-photo');
+let $img = $('img');
 
 //call simpleLightbox plugin
 $($imageGallery).simpleLightbox();
@@ -16,11 +16,11 @@ $($searchPhoto).attr('value', "");
 //search filter feature
 
 //keyup event listener on search box
-$($searchPhoto).on('keyup', function (e) {
+$($searchPhoto).on('keyup', (e) => {
   const searchValue = e.target.value.toLowerCase();
 
   //convert img elements to an array-- loop through them-- store alt text
-  Array.from($img).forEach(function(img) {
+  Array.from($img).forEach((img) => {
     const altText = img.getAttribute('alt');
 
     //compare alt text to search term-- hide elements not found
